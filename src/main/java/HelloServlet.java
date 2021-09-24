@@ -8,7 +8,7 @@ import java.io.PrintWriter;
 
 @WebServlet(
         name="HelloServlet",
-        urlPatterns = "/api"
+        urlPatterns = ""
 )
 
 public class HelloServlet extends HttpServlet {
@@ -26,10 +26,10 @@ public class HelloServlet extends HttpServlet {
         String password= req.getParameter("Password");
 
         if (name.equals("bob") & password.equals("123")){
-            resp.sendRedirect("Yes.html");
+            resp.sendRedirect("StartSide.html");
         }
         else{
-            resp.sendRedirect("index.html");
+            resp.sendRedirect("LoginSide.html");
 
         }
     }
