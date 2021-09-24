@@ -1,0 +1,134 @@
+
+
+body{
+
+    font-family: 'Times New Roman', sans-serif;
+    background: url("IMG/white-abstract.jpg");
+    background-size: cover;
+}
+
+
+/*DETTE ER TOPBAR*/
+.topbar p{
+    font-size: 25px;
+    font-weight:bold;
+    color: black;
+}
+
+/*DETTE ER FOR HOTBAR*/
+
+.hotbar{
+    position: absolute;
+    top:5px;
+    right:5px;
+    height: auto;
+    width: auto;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 10px;
+
+
+}
+.hotbar a {
+    background-color: rgb(11,71,144) /*rgb(162,221,240)*/;
+    display: inline-block;
+    color:white;
+    font-weight: bold;
+    text-align: center;
+    border: 5px;
+    padding: 5px;
+    border-radius: 3px;
+}
+
+/*DETTE ER FOR BRUGERNAVN*/
+.bruger{
+    font-size: 30px;
+    position: relative;
+    top:50px;
+    left:20px;
+}
+
+
+/*DETTE ER FOR MELLEMSTED*/
+
+.mellemsted{
+    position: relative;
+    display: grid;
+    grid-template-columns: 30% 70%;
+    grid-gap: 10px;
+    width:200px;
+    height: 30px;
+    left:80%;
+}
+.mellemsted div{
+    font-weight: bold;
+    background-color: rgb(11,71,144) /*rgb(162,221,240)*/;
+    text-align: center;
+    padding:5px;
+    border-radius: 3px;
+}
+.mellemsted div a{
+    display: inline-block;
+    color: white;
+}
+
+/*DETTE ER FOR SKEMA*/
+
+.Skema{
+    position:relative;
+    display:grid;
+    grid-template-columns: 10% repeat(5,1fr);
+    overflow: auto;
+    left:10px;
+    max-width: 90%;
+    padding: 1em;
+}
+.Skema div{
+    font-weight: bold;
+    color: white;
+    padding: 1em;
+    background: rgb(11,71,144) /*rgb(162,221,240)*/;
+    border-radius: 3px;
+}
+.tider {
+    position:relative;
+    display:grid;
+    grid-template-columns: 10% repeat(5,1fr);
+    grid-template-rows:auto /*repeat(16,1fr)*/;
+    grid-gap: 2px;
+    overflow: auto;
+    left:10px;
+    max-width: 90%;
+    max-height: 600px;
+    padding:1em;
+}
+.tider div{
+    font-weight: bold;
+    color: white;
+    padding: 1em;
+    background-color: rgb(115,121,125);
+    border-radius: 3px;
+}
+.tider div:nth-child(6n-5) {
+    background-color: rgb(11,71,144) /*rgb(162,221,240)*/;
+    opacity: 100;
+}
+
+
+
+/* DETTE ER FOR MINIJOURNAL */
+
+.miniJournal{
+    position:absolute;
+    top: 100px;
+    left: 1100px;
+}
+.miniJournal textarea{
+    min-height: 600px;
+    min-width: 600px;
+}
+.miniJournal img{
+    max-height:80px;
+    max-width: 80px;
+}
+
