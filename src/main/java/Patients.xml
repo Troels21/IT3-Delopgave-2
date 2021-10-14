@@ -1,0 +1,10 @@
+<Patients>
+  <Patient>
+  <cpr>bo</cpr>
+  <name>123</name>
+  </Patient>
+  <Patient>
+    <cpr>jens</cpr>
+    <name>1337</name>
+  </Patient>
+</Patients>
