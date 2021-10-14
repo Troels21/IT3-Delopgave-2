@@ -1,8 +1,12 @@
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
+
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -12,12 +16,11 @@ import java.io.PrintWriter;
 )
 
 public class HelloServlet extends HttpServlet {
+    XmlMapper mapper = new XmlMapper();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        PrintWriter writer = resp.getWriter();
-        writer.println("Hello!");
-        writer.close();
+        resp.sendRedirect("LoginSide.html");
     }
 
     @Override
