@@ -9,6 +9,7 @@ import java.io.*;
 
 @Path("patients")
 public class PatientService {
+    String s ="patient43";
     XmlMapper mapper = new XmlMapper();
     @GET
     public Patient getPatient() throws IOException {
@@ -23,7 +24,7 @@ public class PatientService {
         String xmlString = mapper.writeValueAsString(patient);
         System.out.println(xmlString);
         mapper.enable(SerializationFeature.INDENT_OUTPUT);
-        mapper.writeValue(s,patient);
+        mapper.writeValue(new FileWriter(s),patient);
         return ("wrote "+patient);
     };
 }

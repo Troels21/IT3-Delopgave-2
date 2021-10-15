@@ -21,7 +21,7 @@ public class ListeService {
         }
 
         @POST
-        @Produces({MediaType.APPLICATION_XML})
+        @Produces({MediaType.APPLICATION_XML})½
         @Path("postliste")
         public String makePatient(String xml) throws IOException {
             Patient patient = mapper.readValue(xml,Patient.class);
