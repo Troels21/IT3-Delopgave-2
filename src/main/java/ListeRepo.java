@@ -2,9 +2,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListeRepo {
+     public static ListeRepo repo = new ListeRepo();
      List<Patient> patientList;
 
-    public ListeRepo(){
+     public static ListeRepo getInstance() {
+         return repo;
+     }
+    private ListeRepo(){
         patientList = new ArrayList<>();
 
         Patient p1 = new Patient();
