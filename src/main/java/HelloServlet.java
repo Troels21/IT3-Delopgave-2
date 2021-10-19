@@ -16,7 +16,6 @@ import java.io.PrintWriter;
 )
 
 public class HelloServlet extends HttpServlet {
-    XmlMapper mapper = new XmlMapper();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
@@ -24,17 +23,7 @@ public class HelloServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-        String name= req.getParameter("text");
-        String password= req.getParameter("Password");
-
-        if (name.equals("bob") & password.equals("123")){
-            resp.sendRedirect("StartSide.html");
-        }
-        else{
-            resp.sendRedirect("LoginSide.html");
-
-        }
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp)  {
     }
 }
 
