@@ -12,12 +12,12 @@ public class ListeService {
         public List<Patient> getPatient() throws IOException, SQLException {
             //return ListeRepo.getInstance().getpatientList();
             //return new FileReader("patientlist");
-            return ListeSQL.getInstance().getpatientList();
+            return ListeDB.getInstance().getpatientList();
         }
 
         @POST
         public String makePatient(Patient patient) throws IOException, SQLException {
-            ListeSQL.getInstance().insertPatientSQL(patient);
+            ListeDB.getInstance().insertPatientSQL(patient);
             /*ListeRepo.getInstance().create(patient);
             mapper.enable(SerializationFeature.INDENT_OUTPUT);
             String xmlString = mapper.writeValueAsString(ListeRepo.getInstance().getpatientList());

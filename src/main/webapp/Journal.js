@@ -2,53 +2,47 @@ function noWeekend() {
     let datetime = document.getElementById('datetime');
 
     let day = new Date(datetime.value);
+    let endDay = day;
     if (day.getDay() === 6 || day.getDay() === 0) {
         alert('Weekends not allowed');
         day.setDate(0)
-        datetime.value="";
-    }/*
-
-    let time =day.getMinutes();
-    if (time<8){
-        day.setMinutes(0);
+        datetime.value = "";
     }
-    if (time>8 && time<23){
+
+    let time = day.getMinutes();
+
+    if (time < 8) {
+        day.setMinutes(0);
+
+        endDay.setMinutes(15);
+    }
+    if (time > 8 && time < 23) {
         day.setMinutes(15);
+
+        endDay.setMinutes(30);
     }
-    if (time>23 && time<38){
+    if (time > 23 && time < 38) {
         day.setMinutes(30);
+
+        endDay.setMinutes(45);
     }
-    if (time>38 && time<53){
+    if (time > 38 && time < 53) {
         day.setMinutes(45);
+
+        endDay.setMinutes(0);
+        endDay.setHours(endDay.getHours() + 1);
     }
-    if (time>53){
+    if (time > 53) {
         day.setMinutes(0);
-        day.setHours(day.getHours()+1);
+        day.setHours(day.getHours() + 1);
+
+        endDay.setMinutes(15);
+        endDay.setHours(endDay.getHours() + 1);
     }
 
-    let s =document.getElementById(timeStart);
-    s.value =day.toISOString();*/
+    let start = document.getElementById('timeStart');
+    let end = document.getElementById('timeEnd')
+
+    start.value = (day.getFullYear() + "-" + day.getMonth() + "-" + day.getDay() + " " + day.getHours() + ":" + day.getMinutes());
+    end.value = (endDay.getFullYear() + "-" + endDay.getMonth() + "-" + endDay.getDay() + " " + endDay.getHours() + ":" + endDay.getMinutes());
 }
-/*
-function rounding(){
-    let datetime = document.getElementById('datetime');
-    let day = new Date(datetime.value);
-    let time =day.getTime();
-    if (time<8){
-        datetime.value.setMinutes(0);
-    }
-    if (time>8 && time<23){
-        datetime.value.setMinutes(15);
-    }
-    if (time>23 && time<38){
-        datetime.value.setMinutes(30);
-    }
-    if (time>38 && time<53){
-        datetime.value.setMinutes(45);
-    }
-    if (time>53){
-        datetime.value.setMinutes(0);
-        datetime.value.setHours(day.getHours()+1);
-    }
-    alert(datetime.value.getMinutes());
-}*/

@@ -41,16 +41,14 @@
         <input type="date" id="date" name="date" min="2021-01-01" max="2022-12-31" required>
         <label id="tidmellem"> (08:30-16:30)</label>
         <input type="time" id="time" name="timestart" min="08:30" max="16:30" step="900" required>-->
+        <label for="datetime">Finder t&#230tteste tid</label>
 
-        <input type="datetime-local" id="datetime" name="timeStart" onfocusout="noWeekend()" required>
-        <label for="timeStart">Din tid bliver:</label>
-        <input type="text" id="timeStart" disabled>
-
-
-        <input type="hidden" name="timeEnd">
+        <input type="datetime-local" id="datetime" onfocusout="noWeekend()" required>
+        <input type="text" id="timeStart" name="timeStart" hidden>
+        <input type="hidden" id="timeEnd" name="timeEnd">
 
         <span>
-            <label for="textarea">Notat   </label></span>
+            <label for="textarea">Notat </label></span>
         <textarea id="textarea" name="textarea" rows="4" cols="50" oninput="rounding()"></textarea><br>
 
         <input type="reset" value="Nulstil" class="button">
