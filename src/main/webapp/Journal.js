@@ -2,7 +2,7 @@ function noWeekend() {
     let datetime = document.getElementById('datetime');
 
     let day = new Date(datetime.value);
-    let endDay = day;
+    let endDay = new Date(datetime.value);
     if (day.getDay() === 6 || day.getDay() === 0) {
         alert('Weekends not allowed');
         day.setDate(0)
@@ -11,28 +11,28 @@ function noWeekend() {
 
     let time = day.getMinutes();
 
-    if (time < 8) {
+    if (time <= 8) {
         day.setMinutes(0);
 
         endDay.setMinutes(15);
     }
-    if (time > 8 && time < 23) {
+    if (time > 8 && time <= 23) {
         day.setMinutes(15);
 
         endDay.setMinutes(30);
     }
-    if (time > 23 && time < 38) {
+    if (time > 23 && time <= 38) {
         day.setMinutes(30);
 
         endDay.setMinutes(45);
     }
-    if (time > 38 && time < 53) {
+    if (time > 38 && time <= 53) {
         day.setMinutes(45);
 
         endDay.setMinutes(0);
         endDay.setHours(endDay.getHours() + 1);
     }
-    if (time > 53) {
+    if (time >= 53) {
         day.setMinutes(0);
         day.setHours(day.getHours() + 1);
 

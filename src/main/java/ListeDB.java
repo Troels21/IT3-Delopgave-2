@@ -51,7 +51,10 @@ public class ListeDB {
     public void insertPatientSQL(Patient p) throws SQLException {
         String cpr = p.getCpr();
         String navn = p.getName();
-        String query = "INSERT INTO patients(cpr, navn) values (" + cpr + ", '" + navn + "')";
+        String startTime = p.getTimestart();
+        String endTime = p.getTimeend();
+        String note = p.getNote();
+        String query = "INSERT INTO patients(cpr, navn, startTime, endTime, note) values("+cpr+",'"+navn+"', '"+startTime+"', '"+endTime+"','"+note+"');";
         SQL.getSqlOBJ().makeConnectionSQL();
         SQL.getSqlOBJ().myStatement.execute(query);
         SQL.getSqlOBJ().removeConnectionSQL();
