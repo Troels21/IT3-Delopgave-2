@@ -36,6 +36,9 @@ public class ListeDB {
                 Patient p = new Patient();
                 p.setCpr(String.valueOf(rs.getInt(1)));
                 p.setName(rs.getString(2));
+                p.setTimestart(rs.getString(3));
+                p.setTimeend(rs.getString(4));
+                p.setNote(rs.getString(5));
 
                 patientList.add(p);
             }

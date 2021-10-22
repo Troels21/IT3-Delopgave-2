@@ -6,7 +6,7 @@ import java.util.List;
 
 @Path("liste")
 @Produces({MediaType.APPLICATION_XML})
-@Consumes({MediaType.APPLICATION_XML})
+@Consumes({MediaType.APPLICATION_XML,MediaType.APPLICATION_FORM_URLENCODED})
 public class ListeService {
     @GET
     public List<Patient> getPatient() throws IOException, SQLException {
@@ -29,34 +29,42 @@ public class ListeService {
 
     @POST
     @Path("liste2")
-    @Consumes({MediaType.APPLICATION_FORM_URLENCODED})
     public String makepatientSQL(String s) throws SQLException {
-        System.out.println(s);
 
         String[] opdelt1 = s.split("&");
 
         Patient patient = new Patient();
-        patient.setName(opdelt1[0].substring(6));
-        patient.setCpr(opdelt1[1].substring(3));
-        patient.setTimestart(cleanupString(opdelt1[2].substring(10)));
-        patient.setTimeend(cleanupString(opdelt1[3].substring(8)));
-        patient.setNote(opdelt1[4].substring(9));
+        patient.setCpr(opdelt1[0].substring(4));
+        patient.setName(cleanupString(opdelt1[1].substring(5)));
+        patient.setTimestart(cleanupTime(opdelt1[2].substring(10)));
+        patient.setTimeend(cleanupTime(opdelt1[3].substring(8)));
+        patient.setNote(cleanupString(opdelt1[4].substring(5)));
 
-        patient.toString();
         ListeDB.getInstance().insertPatientSQL(patient);
-
         return "added patient: " + patient.toString();
     }
 
     //Andreas Kig væk det her er ikke pænt, og det er du skal bare minimere metoden (den virker end of story).
-    public String cleanupString(String s) {
+    public String cleanupTime(String s) {
         int plus = s.indexOf("+");
         int unicode = s.indexOf("%");
         int weirdA = s.indexOf("A");
-        String Cleanup;
+        String Cleanup = "";
         Cleanup = s.substring(0, plus);
         Cleanup = Cleanup + " " + s.substring(plus + 1, unicode);
         Cleanup = Cleanup + ":" + s.substring(weirdA + 1);
         return Cleanup;
+    }
+
+    public String cleanupString(String s) {
+        if (s.indexOf("+") > 0) {
+            String[] cleanArray = s.split("\\+");
+            String CleanNote = cleanArray[0];
+            for (int i = 1; i < cleanArray.length; i++) {
+                CleanNote = CleanNote + " " + cleanArray[i];
+            }
+
+            return CleanNote;
+        } else return s;
     }
 }

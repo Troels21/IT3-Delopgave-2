@@ -10,7 +10,8 @@
 <body>
 <h1>Journal</h1>
 <div class="container">
-    <form action="http://localhost:8080/IT3_Delopgave_2_war/data/liste/liste2" method="post" enctype="application/x-www-form-urlencoded" >
+    <form action="http://localhost:8080/IT3_Delopgave_2_war/data/liste/liste2" method="post"
+          enctype="application/x-www-form-urlencoded" target="_blank">
          <span>
             <label for="cpr">CPR</label></span>
 
@@ -42,15 +43,15 @@
         <label for="datetime">Finder t&#230tteste tid</label>
 
         <input type="datetime-local" id="datetime" onfocusout="noWeekend()" required>
-        <input type="text" id="timeStart" name="timestart" >
-        <input type="text" id="timeEnd" name="timeend" >
+        <input type="text" id="timeStart" name="timestart">
+        <input type="text" id="timeEnd" name="timeend">
 
         <span>
             <label for="textarea">Notat </label></span>
         <textarea id="textarea" name="note" rows="4" cols="50" oninput="rounding()"></textarea><br>
 
         <input type="reset" value="Nulstil" class="button">
-        <input type="submit" value="Indsend" class="button">
+        <input type="submit" value="Indsend" class="button" onclick="window.location.href ='StartSide.html';">
 
     </form>
 </div>
