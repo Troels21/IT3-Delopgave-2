@@ -102,3 +102,9 @@ body {
     background: none;
     border: none;
 }
+
+i{
+    color: gray;
+    margin-left: -45px;
+    cursor: pointer;
+}
