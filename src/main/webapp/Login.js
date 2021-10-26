@@ -1,8 +1,8 @@
 
-const visibilityListen = document.getElementById("visibilityListen")
-visibilityListen.addEventListener("click", toggleVisibiliy) //brug functionen hvis man trykker på iconet
+const visibilityListen = document.getElementById('visibilityListen')
+visibilityListen.addEventListener('click', togglevisibiliy) //brug functionen hvis man trykker på iconet
 
-    function toggleVisibiliy() {
+    function togglevisibiliy() {
         const passwordInput = document.getElementById("kode")
         const icon = document.getElementById("icon")
         if (passwordInput.type === "password") { //vis koden
