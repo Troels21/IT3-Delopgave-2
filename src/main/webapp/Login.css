@@ -77,7 +77,7 @@ body {
 
 /* rest og login knappen */
 .knap {
-    font-family: "Times New Roman";
+    font-family: "Times New Roman", serif;
     display:inline-block;
     border: none;
     outline: none;
@@ -92,7 +92,7 @@ body {
 
 /* admin knappen */
 .admin-knap {
-    font-family: "Times New Roman";
+    font-family: "Times New Roman", serif;
     display: block;
     margin-left: auto;
     text-align: center;
@@ -103,6 +103,7 @@ body {
     border: none;
 }
 
+/* øje icon */
 i{
     color: gray;
     position: absolute;
