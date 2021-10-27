@@ -89,6 +89,11 @@ body{
     padding: 1em;
     background: rgb(11,71,144) /*rgb(162,221,240)*/;
     border-radius: 3px;
+
+}
+.dage div:hover{
+    background: gray;
+
 }
 .tider {
     position:relative;
