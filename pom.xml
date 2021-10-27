@@ -73,13 +73,6 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.23</version>
         </dependency>
-        <!--Copyright (c) 2002-2015 Atsuhiko Yamanaka, JCraft,Inc.
-            All rights reserved. -->
-        <dependency>
-            <groupId>jsch</groupId>
-            <artifactId>jsch</artifactId>
-            <version>0.1.29</version>
-        </dependency>
     </dependencies>
 
 </project>
