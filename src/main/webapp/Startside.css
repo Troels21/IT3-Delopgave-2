@@ -74,23 +74,42 @@ body{
 
 /*DETTE ER FOR SKEMA*/
 
-.Skema{
-    position:relative;
+.schema{
+    position:absolute;
     display:grid;
     grid-template-columns: 10% repeat(5,1fr);
     left:10px;
-    max-width: 90%;
+    width: 200rem;
     padding: 1em;
 }
-.Skema div{
+.days{
+    width:30rem;
     font-weight: bold;
     color: white;
-    padding: 1em;
-    background: rgb(11,71,144) /*rgb(162,221,240)*/;
+    background:rgb(11,71,144);
     border-radius: 3px;
-
+    display: flex;
+    text-align: center;
 }
-.dage div:hover{
+.days div{
+    padding: 1rem;
+    letter-spacing: 0.1rem;
+}
+.dates{
+    color: white;
+    font-weight: bold;
+    width: 30rem;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1rem;
+}
+.dates div{
+    padding: 1rem;
+    width: 20%;
+    background:rgb(115,121,125);
+    justify-content: center;
+}
+.dates div:hover{
     background: gray;
 
 }
@@ -102,7 +121,7 @@ body{
     grid-gap: 2px;
     overflow: auto;
     left:10px;
-    max-width: 90%;
+    width: 50rem ;
     max-height: 600px;
     padding:1em;
 }
