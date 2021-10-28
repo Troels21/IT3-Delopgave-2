@@ -90,19 +90,6 @@ body {
     cursor: pointer;
 }
 
-/* admin knappen */
-.admin-knap {
-    font-family: "Times New Roman", serif;
-    display: block;
-    margin-left: auto;
-    text-align: center;
-    letter-spacing: 1px;
-    margin-bottom: 2rem;
-    color: white;
-    background: none;
-    border: none;
-}
-
 /* øje icon */
 i{
     color: gray;

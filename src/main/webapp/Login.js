@@ -18,19 +18,19 @@ visibilityListen.addEventListener('click', togglevisibiliy) //brug functionen hv
     function validate(){
         const username = document.getElementById("cpr").value;
         const password = document.getElementById("kode").value;
-        if(username === ""){
+        if(username === ""){ //hvis brugernavn er forkert send fejlkode
             alert("Indtast venligst et CPR-nummer")
             return false
         }
-        if(password === ""){
+        if(password === ""){ //hvis koden er forkert send fejlkode
             alert("Indtast venligst et kodeord")
             return false
          }
         if( username === "123456-7890" && password === "Test123"){
-            window.location = "StartSide.html";
+            window.location = "StartSide.html"; //gå til startsiden hvis username og kode er rigtigt
             return false;
         }
-        else{
+        else{ //hvis koden og/eller brugernavnet er forkert send fejlkode
             alert("Login fejlede - indtast venligst et gyldigt CPR-nummer og kodeord")
         }
     }
