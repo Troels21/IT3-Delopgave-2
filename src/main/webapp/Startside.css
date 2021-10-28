@@ -137,6 +137,83 @@ body{
     opacity: 100;
 }
 
+/* Pop-up journal */
+
+body {
+    background: url("IMG/white-abstract.jpg");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Times New Roman', serif;
+
+}
+
+h1 {
+    margin: auto;
+    width: 400px;
+    padding: 10px;
+    height: 25px;
+
+}
+
+.container {
+    margin: auto;
+    width: 385px;
+    padding: 10px;
+}
+
+label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#tidmellem {
+    font-size: 15px;
+    font-weight: normal;
+}
+
+span {
+    display: block;
+}
+
+input {
+    background-color: #eee;
+    padding: 12px;
+    margin: 8px 0;
+    width: 95%;
+    border: 1px solid;
+}
+
+select{
+    background-color: #eee;
+    padding: 12px;
+    margin: 8px 0;
+    width: 102%;
+    border: 1px solid;
+}
+
+textarea{
+    background-color: #eee;
+    padding: 12px;
+    margin: 8px 0;
+    width: 95%;
+    border: 1px solid;
+}
+
+.button {
+    border: 1px solid rgb(11,71,144);
+    background-color: rgb(11,71,144);
+    color: white;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    height: 30px;
+    width: 49%
+
+}
+
 
 
 
