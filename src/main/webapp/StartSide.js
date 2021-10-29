@@ -1,11 +1,52 @@
 
+//Kalendar
 
- var timeApi =  'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
+const date = new Date();
+date.setMonth(2)
+const months= [
+ "Januar",
+ "Febuar",
+ "Marts",
+ "April",
+ "Maj",
+ "Juni",
+ "Juli",
+ "August",
+ "September",
+ "Oktober",
+ "November",
+ "December",
+];
+let mymonth = months[date.getMonth()];
+const dates = document.querySelector(".dates");
+const lastdates = new Date(date.getFullYear(),date.getMonth()+1,0).getDate();
 
-console.log(timeApi)
+document.getElementById("actualmonth").innerText =mymonth;
+
+const firstdayindex = date.getDay()-1;
+
+const prevlastdates = new Date(date.getFullYear(),date.getMonth(),0).getDate()
+const nextdayindex = new Date(date.getFullYear(),date.getMonth()+1,0).getDay();
+const nextdays = 7-nextdayindex;
+
+let days="";
+
+for(let x=firstdayindex; x>0; x--){
+ days+=`<div class="lastdates">${prevlastdates-x+1}</div>`;
+}
+
+for(let z=1;z<=lastdates;z++){
+ days+= `<div>${z}</div>`;
+
+}
+for(let y=1; y<=nextdays; y++){
+ days+=`<div class="nextdates">${y}</div>`;
+ dates.innerHTML=days;
+}
 
 
- //Pop-up journal
+
+//Pop-up journal
 
  function openForm() {
   document.getElementById("myForm").style.display = "block";
