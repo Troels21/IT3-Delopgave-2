@@ -72,6 +72,17 @@ body{
     color: white;
 }
 
+/*AUTO TIDER*/
+.autotidersted{
+    position:absolute;
+    width: 30rem;
+    height: 40rem;
+    left: 58%;
+    margin:0;
+    justify-content: center;
+    align-items: center;
+    background-color: gray;
+}
 /*DETTE ER FOR SKEMA*/
 
 .schema{
@@ -174,6 +185,7 @@ body{
     width: 50rem ;
     max-height: 600px;
     padding:1em;
+
 }
 .tider div{
     font-weight: bold;
@@ -188,6 +200,34 @@ body{
 }
 
 /* Pop-up journal */
+.form-popup{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    border: 3px solid #f1f1f1;
+}
+
+.form-container {
+    max-width: 500px;
+    padding: 10px;
+    background-color: white;
+}
+.button1{
+    border: 1px solid rgb(11,71,144);
+    background-color: rgb(11,71,144);
+    color: white;
+    height: 30px;
+    text-decoration: underline;
+}
+
+.button1:hover {background-color: dodgerblue;}
+
+.button1:active {
+    background-color: dodgerblue;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
 
 
 h1 {
@@ -252,7 +292,13 @@ textarea{
     text-transform: uppercase;
     height: 30px;
     width: 49%
+}
+.button:hover {background-color: dodgerblue;}
 
+.button:active {
+    background-color: dodgerblue;;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
 }
 
 
