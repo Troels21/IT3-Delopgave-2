@@ -2,7 +2,7 @@
 //Kalendar
 
 const date = new Date();
-date.setMonth(2)
+date.setMonth(8)
 const months= [
  "Januar",
  "Febuar",
