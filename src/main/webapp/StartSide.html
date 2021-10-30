@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Start side</title>
     <link rel="stylesheet" type="text/css" href="Startside.css">
-    <script src="StartSide.js"></script>
+
 </head>
 <body>
 
@@ -28,17 +28,78 @@
 <div class="bruger">
     <p><b>BRUGERNAVN</b></p>
 </div>
+<button onclick="fecthcall('2020-09-04','2022-09-04')">helo</button>
 <!--DETTE ER FOR MELLEMSTED-->
 
 <div class="mellemsted">
     <div><a href="StartSide.html">Refresh</a></div>
-    <div><a href="Journal.html">Tilføj ny patient</a></div>
+    <!--Pop-up journal-->
+    <button onclick="openForm()" class="button1">Tilføj ny patient</button>
+    <div class="form-popup" id="myForm">
+        <form action="http://localhost:8080/IT3_Delopgave_2_war/data/liste/listeSQL" method="post"
+              enctype="application/x-www-form-urlencoded" target="_blank" class="form-container">
+            <h1>Journal</h1>
+            <span>
+            <label for="cpr">CPR</label></span>
+            <span>
+            <input type="text" id="cpr" name="cpr" placeholder="CPR" required class="box"></span>
+            <span>
+            <label for="navn">Fornavn og efternavn</label></span>
+
+            <span>
+            <input type="text" id="navn" name="name" placeholder="Fornavn og efternavn" required class="box"></span>
+            <!--
+            <span>
+                <label for="alder">Alder</label> <b> & </b><label for="koen">k&#248n</label></span>
+            <span>
+                <input type="text" id="alder" name="alder" placeholder="Alder " required class="box">
+                <select name="koen" id="koen" class="dropdown">
+                    <option value="" disabled selected>k&#248n</option>
+                    <option value="M">Mand</option>
+                    <option value="D">Kvinde</option>
+                    <option value="A">Andet</option>
+            </select></span>/*-->
+            <!--
+                    <span>
+                        <label for="date">Dato</label> <b> & </b> <label for="time">Tidspunkt</label></span>
+
+                    <input type="date" id="date" name="date" min="2021-01-01" max="2022-12-31" required>
+                    <label id="tidmellem"> (08:30-16:30)</label>
+                    <input type="time" id="time" name="timestart" min="08:30" max="16:30" step="900" required>-->
+            <label for="datetime">Finder t&#230tteste tid</label>
+
+            <input type="datetime-local" id="datetime" onfocusout="noWeekend()" required>
+            <label for="timefree">t&#230tteste tid</label>
+            <input type="text" id="timefree">
+
+            <input type="text" id="timeStart" name="timestart" hidden>
+            <input type="text" id="timeEnd" name="timeend" hidden>
+
+            <span>
+            <label for="textarea">Notat </label></span>
+            <textarea id="textarea" name="note" rows="4" cols="50" oninput="rounding()"></textarea><br>
+
+            <input type="button" value="Cancel" class="button" onclick="closeForm()">
+            <input type="button" value="Indsend" class="button" onclick="submitForm()">
+        </form>
+    </div>
 </div>
 
+
+
+<!--DETTE ER FOR AUTOGENNERET TIDER -->
+<div class="autotidersted">
+    <div class="autotider"></div>
+</div>
 <!--DETTE ER FOR SKEMA-->
 
 
 <div class="schema" >
+    <div class="actualdate">
+        <div class="prev">Previous</div>
+        <h1 id="actualmonth"></h1>
+        <div class="next">Next</div>
+    </div>
     <div>
         <div class="days">
             <div>Mandag</div>
@@ -46,114 +107,53 @@
             <div>Onsdag</div>
             <div>Torsdag</div>
             <div>Fredag</div>
+            <div>Lørdag</div>
+            <div>Søndag</div>
         </div>
-        <div class="dates">
-            <div>1</div><div>2</div><div>3</div><div>4</div><div>5</div><div>6</div>
-            <div>7</div><div>8</div><div>9</div><div>10</div><div>11</div><div>12</div>
-            <div>13</div><div>14</div><div>15</div><div>16</div><div>17</div><div>18</div>
-            <div>18</div><div>19</div><div>20</div><div>21</div><div>22</div><div>23</div>
-            <div>24</div><div>25</div><div>26</div><div>27</div><div>28</div><div>29</div><div>30</div>
-            <div>31</div>
-        </div>
-    </div>
-    <div class="months">
-        <div>Januar</div><div>Febuar</div><div>Marts</div><div>April</div>
-        <div>Maj</div><div>Juni</div><div>Juli</div><div>August</div>
-        <div>September</div><div>Oktober</div><div>November</div><div>December</div>
-    </div>
-    <div class="tider">
-        <div>10:00</div><div></div>
-        <div>10:15</div><div></div>
-        <div>10:30</div><div></div>
-        <div>10:45</div><div></div>
-        <div>11:00</div><div></div>
-        <div>11:15</div><div></div>
-        <div>11:30</div><div></div>
-        <div>11:45</div><div></div>
-        <div>12:00</div><div></div>
-        <div>12:15</div><div></div>
-        <div>12:30</div><div></div>
-        <div>12:45</div><div></div>
-        <div>13:00</div><div></div>
-        <div>13:15</div><div></div>
-        <div>13:30</div><div></div>
-        <div>13:45</div><div></div>
-        <div>14:00</div><div></div>
-        <div>14:15</div><div></div>
-        <div>14:30</div><div></div>
-        <div>14:45</div><div></div>
-        <div>15:00</div><div></div>
-        <div>15:15</div><div></div>
-        <div>15:30</div><div></div>
-        <div>15:45</div><div></div>
-        <div>16:00</div><div></div>
-        <div>16:15</div><div></div>
-        <div>16:30</div><div></div>
-        <div>16:45</div><div></div>
-        <div>17:00</div><div></div>
-        <div>17:15</div><div></div>
-        <div>17:30</div><div></div>
-        <div>17:45</div><div></div>
-        <div>18:00</div><div></div>
+        <div class="lastdates"></div>
+        <div class="dates"></div>
+        <div class="nextdates"></div>
     </div>
 
 </div>
-
-
-<!--Pop-up journal-->
-
-<button class="open-button" onclick="openForm()">Tilføj ny patient</button>
-
-<div class="form-popup" id="myForm">
-    <form action="http://localhost:8080/IT3_Delopgave_2_war/data/liste/liste2" method="post"
-          enctype="application/x-www-form-urlencoded" target="_blank">
-        <h1>Journal</h1>
-         <span>
-            <label for="cpr">CPR</label></span>
-
-        <span>
-            <input type="text" id="cpr" name="cpr" placeholder="CPR" required class="box"></span>
-        <span>
-            <label for="navn">Fornavn og efternavn</label></span>
-
-        <span>
-            <input type="text" id="navn" name="name" placeholder="Fornavn og efternavn" required class="box"></span>
-        <!--
-        <span>
-            <label for="alder">Alder</label> <b> & </b><label for="koen">k&#248n</label></span>
-        <span>
-            <input type="text" id="alder" name="alder" placeholder="Alder " required class="box">
-            <select name="koen" id="koen" class="dropdown">
-                <option value="" disabled selected>k&#248n</option>
-                <option value="M">Mand</option>
-                <option value="D">Kvinde</option>
-                <option value="A">Andet</option>
-        </select></span>/*-->
-        <!--
-                <span>
-                    <label for="date">Dato</label> <b> & </b> <label for="time">Tidspunkt</label></span>
-
-                <input type="date" id="date" name="date" min="2021-01-01" max="2022-12-31" required>
-                <label id="tidmellem"> (08:30-16:30)</label>
-                <input type="time" id="time" name="timestart" min="08:30" max="16:30" step="900" required>-->
-        <label for="datetime">Finder t&#230tteste tid</label>
-
-        <input type="datetime-local" id="datetime" onfocusout="noWeekend()" required>
-        <input type="text" id="timeStart" name="timestart">
-        <input type="text" id="timeEnd" name="timeend">
-
-        <span>
-            <label for="textarea">Notat </label></span>
-        <textarea id="textarea" name="note" rows="4" cols="50" oninput="rounding()"></textarea><br>
-
-        <input type="reset" value="Nulstil" class="button">
-        <input type="submit" value="Indsend" class="button" onclick="closeForm()">
-
-    </form>
-
+<div class="tider">
+    <div>10:00</div><div></div>
+    <div>10:15</div><div></div>
+    <div>10:30</div><div></div>
+    <div>10:45</div><div></div>
+    <div>11:00</div><div></div>
+    <div>11:15</div><div></div>
+    <div>11:30</div><div></div>
+    <div>11:45</div><div></div>
+    <div>12:00</div><div></div>
+    <div>12:15</div><div></div>
+    <div>12:30</div><div></div>
+    <div>12:45</div><div></div>
+    <div>13:00</div><div></div>
+    <div>13:15</div><div></div>
+    <div>13:30</div><div></div>
+    <div>13:45</div><div></div>
+    <div>14:00</div><div></div>
+    <div>14:15</div><div></div>
+    <div>14:30</div><div></div>
+    <div>14:45</div><div></div>
+    <div>15:00</div><div></div>
+    <div>15:15</div><div></div>
+    <div>15:30</div><div></div>
+    <div>15:45</div><div></div>
+    <div>16:00</div><div></div>
+    <div>16:15</div><div></div>
+    <div>16:30</div><div></div>
+    <div>16:45</div><div></div>
+    <div>17:00</div><div></div>
+    <div>17:15</div><div></div>
+    <div>17:30</div><div></div>
+    <div>17:45</div><div></div>
+    <div>18:00</div><div></div>
 </div>
 
 
 </body>
+<script src="StartSide.js"></script>
 </html>
 

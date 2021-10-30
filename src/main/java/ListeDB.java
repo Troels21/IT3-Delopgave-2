@@ -48,6 +48,7 @@ public class ListeDB {
             e.printStackTrace();
         }
         SQL.getSqlOBJ().removeConnectionSQL();
+
         return patientList;
     }
 
@@ -61,6 +62,33 @@ public class ListeDB {
         SQL.getSqlOBJ().makeConnectionSQL();
         SQL.getSqlOBJ().myStatement.execute(query);
         SQL.getSqlOBJ().removeConnectionSQL();
+    }
+
+    public List<Patient> getpatientListeDateTime(String fra, String til) throws SQLException {
+        SQL.getSqlOBJ().makeConnectionSQL();
+        patientList = new ArrayList<>();
+        String query = "SELECT * FROM patients WHERE startTime BETWEEN '"+fra+"' and '"+til+"';";
+        try {
+            ResultSet rs = SQL.getSqlOBJ().myStatement.executeQuery(query);
+
+            while (rs.next()) {
+                Patient p = new Patient();
+                p.setCpr(String.valueOf(rs.getInt(1)));
+                p.setName(rs.getString(2));
+                p.setTimestart(rs.getString(3));
+                p.setTimeend(rs.getString(4));
+                p.setNote(rs.getString(5));
+
+                patientList.add(p);
+            }
+
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        SQL.getSqlOBJ().removeConnectionSQL();
+
+        return patientList;
     }
 }
 
