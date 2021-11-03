@@ -2,35 +2,33 @@
 const visibilityListen = document.getElementById('visibilityListen')
 visibilityListen.addEventListener('click', togglevisibiliy) //brug functionen hvis man trykker på iconet
 
-    function togglevisibiliy() {
-        const passwordInput = document.getElementById("kode")
-        const icon = document.getElementById("icon")
-        if (passwordInput.type === "password") { //vis koden
-            passwordInput.type = "text"
-            icon.innerText = "visibility_off"
-        } else { //vis ikke koden
-            passwordInput.type = "password"
-            icon.innerText = "visibility"
-        }
+function togglevisibiliy() {
+    const passwordInput = document.getElementById("password")
+    const icon = document.getElementById("icon")
+    if (passwordInput.type === "password") { //vis koden
+        passwordInput.type = "text"
+        icon.innerText = "visibility_off"
+    } else { //vis ikke koden
+        passwordInput.type = "password"
+        icon.innerText = "visibility"
     }
+}
 
 /* kode til at validere koden */
-    function validate(){
-        const username = document.getElementById("cpr").value;
-        const password = document.getElementById("kode").value;
-        if(username === ""){ //hvis brugernavn er forkert send fejlkode
-            alert("Indtast venligst et CPR-nummer")
-            return false
+function fetchrs() {
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+    fetch("http://localhost:8080/IT3_Delopgave_2_war/data/login?" + new URLSearchParams({
+            username: user,
+            password: pass,
         }
-        if(password === ""){ //hvis koden er forkert send fejlkode
-            alert("Indtast venligst et kodeord")
-            return false
-         }
-        if( username === "123456-7890" && password === "Test123"){
-            window.location = "StartSide.html"; //gå til startsiden hvis username og kode er rigtigt
-            return false;
-        }
-        else{ //hvis koden og/eller brugernavnet er forkert send fejlkode
-            alert("Login fejlede - indtast venligst et gyldigt CPR-nummer og kodeord")
-        }
+    )).then(resp => resp.text()).then(data => validate(data));
+}
+
+function validate(i) {
+    if (i == 1) {
+        window.location.replace("StartSide.html");
+    } else {
+        alert("Forkert password");
     }
+}

@@ -7,17 +7,23 @@ function fecthcall(fra, til) {
 }
 
 function udfyldskema(data) {
-    let autotider = document.getElementsByClassName("autotider");
-    let tider = "";
+    let autotider = document.getElementsByClassName("autotidersted");
+    let autidercontainer = document.createElement('LI')
     for (let i = 0; i <= data.length; i++) {
-        let time = data[i].timestart.substring(11);
+        let time = data[i].timestart;
         let name = data[i].name;
         let cpr = data[i].cpr;
 
-        let text = time + "        " + name + "," + cpr;
-        tider += '<div class="time">${text}</div>';
+        var tider = document.createElement('div');
+        tider.innerText = time;
+
+        var navne = document.createElement('div');
+        navne.innerText = name + "      " + cpr;
+        
+        tider.appendChild(navne);
+        autidercontainer.appendChild(tider);
     }
-    autotider.innerHTML = tider;
+    autotider.innerText=autidercontainer;
 }
 
 //Kalendar

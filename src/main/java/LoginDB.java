@@ -1,6 +1,5 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class LoginDB {
 
@@ -10,22 +9,26 @@ public class LoginDB {
         Mysql = new LoginDB();
     }
 
+
     public static LoginDB getInstance() {
         return Mysql;
     }
 
-    private ResultSet resultSet;
-    private Statement statement;
-
-    public ResultSet hentBrugerListe() {
-        String query1 = "SELECT * FROM listedb.LoginOplysninger;";
-
+    public String hentBrugerListe(String s) throws SQLException {
+        SQL.getSqlOBJ().makeConnectionSQL();
+        String query1 = "SELECT * FROM listedb.LoginOplysninger WHERE USERNAME = '"+s+"';";
+        String svar="";
         try {
-            resultSet = statement.executeQuery(query1);
+            ResultSet rs = SQL.getSqlOBJ().myStatement.executeQuery(query1);
+            while (rs.next()){
+                svar =svar+rs.getString(1);
+                svar = svar+"A"+rs.getString(2);
+            }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-        return resultSet;
+        SQL.getSqlOBJ().removeConnectionSQL();
+       return svar;
     }
 
 }

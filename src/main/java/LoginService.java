@@ -1,25 +1,20 @@
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import java.sql.ResultSet;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.Objects;
 
 @Path("login")
+@Produces({MediaType.TEXT_PLAIN})
 public class LoginService {
 
-    @POST
-    public boolean loginKontrol(String s) throws SQLException {
-        String[] opdelt1 = s.split("&");
-        String navn = opdelt1[0].substring(5);
-        String kode = opdelt1[1].substring(9);
-
-        ResultSet data = LoginDB.getInstance().hentBrugerListe();
-        while (data.next()) {
-            if (Objects.equals(data.getString("username"), navn) && Objects.equals(data.getString("password"), kode)) {
-                return true;
+    @GET
+    public int loginKontrol(@QueryParam("username") String user, @QueryParam("password") String pass) throws SQLException {
+        String s = LoginDB.getInstance().hentBrugerListe(user);
+        if(s.length()>1){
+            String[] opdelt = s.split("A");
+            if(opdelt[1].equals(pass)){
+                return 1;
             }
         }
-        return false;
+        return 0;
     }
 }
