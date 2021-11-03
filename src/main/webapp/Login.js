@@ -15,22 +15,21 @@ visibilityListen.addEventListener('click', togglevisibiliy) //brug functionen hv
     }
 
 /* kode til at validere koden */
-    function validate(){
-        const username = document.getElementById("cpr").value;
-        const password = document.getElementById("kode").value;
-        if(username === ""){ //hvis brugernavn er forkert send fejlkode
-            alert("Indtast venligst et CPR-nummer")
-            return false
-        }
-        if(password === ""){ //hvis koden er forkert send fejlkode
-            alert("Indtast venligst et kodeord")
-            return false
-         }
-        if( username === "123456-7890" && password === "Test123"){
-            window.location = "StartSide.html"; //gå til startsiden hvis username og kode er rigtigt
-            return false;
-        }
-        else{ //hvis koden og/eller brugernavnet er forkert send fejlkode
-            alert("Login fejlede - indtast venligst et gyldigt CPR-nummer og kodeord")
-        }
+    function fetchrs(){
+        const user = document.getElementById("cpr").value;
+        const pass = document.getElementById("kode").value;
+
+        fetch("http://localhost:8080/IT3_Delopgave_2_war/data/login?"+new URLSearchParams({
+            username : user ,
+            password : pass
+            }
+        )).then(resp => validate(resp) );
     }
+
+    function validate(i){
+        if(i==1){
+            window.location.replace("StartSide.html");
+        }else{
+            alert("Forkert password");
+        }
+}

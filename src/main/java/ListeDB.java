@@ -5,7 +5,6 @@ import java.util.List;
 public class ListeDB {
     private List<Patient> patientList;
 
-
     public static ListeDB sql;
 
     static {
@@ -15,7 +14,6 @@ public class ListeDB {
             e.printStackTrace();
         }
     }
-
 
     public static ListeDB getInstance() {
         return sql;
