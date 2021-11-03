@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 @Path("liste")
-@Produces({MediaType.APPLICATION_XML})
+@Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
 public class ListeService {
     @GET
