@@ -1,18 +1,17 @@
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
-import java.sql.ResultSet;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
 
 @Path("login")
+@Produces({MediaType.TEXT_PLAIN})
 public class LoginService {
 
-    @POST
+    @GET
     public int loginKontrol(@QueryParam("username") String user, @QueryParam("password") String pass) throws SQLException {
-
-        ResultSet data = LoginDB.getInstance().hentBrugerListe(user);
-        if(data.getString(0).length()>0){
-            if(data.getString(1).equals(pass)){
+        String s = LoginDB.getInstance().hentBrugerListe(user);
+        if(s.length()>1){
+            String[] opdelt = s.split("A");
+            if(opdelt[1].equals(pass)){
                 return 1;
             }
         }
