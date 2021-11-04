@@ -18,10 +18,10 @@ function togglevisibiliy() {
 function fetchrs() {
     let user = document.getElementById("username").value;
     let pass = document.getElementById("password").value;
-    fetch("http://localhost:8080/IT3_Delopgave_2_war/data/login?" + new URLSearchParams({
-            username: user,
-            password: pass,
-        }
+
+    fetch("http://localhost:8080/IT3_D  elopgave_2_war/data/login?" + new URLSearchParams({
+        username: user,
+        password: pass,}
     )).then(resp => resp.text()).then(data => validate(data));
 }
 

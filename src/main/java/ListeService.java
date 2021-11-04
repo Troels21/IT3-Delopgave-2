@@ -11,22 +11,8 @@ import java.util.List;
 public class ListeService {
     @GET
     public List<Patient> getPatient() throws SQLException {
-        //return ListeRepo.getInstance().getpatientList();
-        //return new FileReader("patientlist");
         return ListeDB.getInstance().getpatientList();
     }
-    /*
-    @POST
-    public String makePatient(Patient patient) throws SQLException {
-        ListeDB.getInstance().insertPatientSQL(patient);
-            //ListeRepo.getInstance().create(patient);
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            String xmlString = mapper.writeValueAsString(ListeRepo.getInstance().getpatientList());
-            System.out.println(xmlString);
-            FileWriter fw = new FileWriter("patientlist",true);
-            fw.write(xmlString);
-        return "added patient: " + patient.toString();
-    }*/
 
     @Path("listeSQL")
     @POST

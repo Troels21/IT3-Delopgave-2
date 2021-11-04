@@ -1,6 +1,4 @@
-function fecthcall(from, to) {
-    let fra = from;
-    let til = to;
+function fecthcall(fra, til) {
     fetch("http://localhost:8080/IT3_Delopgave_2_war/data/liste/listeSQL?" + new URLSearchParams({
         from: fra,
         to: til,
@@ -9,31 +7,30 @@ function fecthcall(from, to) {
 }
 
 function udfyldskema(data) {
-    let time = "";
-    let name = "";
-    let cpr = "";
-    let container = "";
-    let note = "";
-    console.log("Hello");
+    let autotider = document.getElementsByClassName("autotidersted");
+    let autidercontainer = document.createElement('LI')
+    for (let i = 0; i <= data.length; i++) {
+        let time = data[i].timestart;
+        let name = data[i].name;
+        let cpr = data[i].cpr;
 
-    for (let i = 0; i < data.length; i++) {
-        time = data[i].timestart.substring(11, 16);
-        name = (data[i].name + " ");
-        cpr = "CPR: " + data[i].cpr;
-        note = "Notat: " + data[i].note;
+        var tider = document.createElement('div');
+        tider.innerText = time;
 
-
-        let tider = '<span class="autotider">' + time + '</span>'
-        let navne = '<span class="autoname">' + name + cpr + '</span>';
-        let notat = '<span class="autonote">' + note + '</span><hr>';
-
-        container += tider + navne + notat;
+        var navne = document.createElement('div');
+        navne.innerText = name + "      " + cpr;
+        
+        tider.appendChild(navne);
+        autidercontainer.appendChild(tider);
     }
-
-    document.getElementById("autotider").innerHTML = container;
+    autotider.innerText=autidercontainer;
 }
 
 //Kalendar
+
+
+const date = new Date();
+date.setMonth(8)
 const months = [
     "Januar",
     "Febuar",
@@ -48,71 +45,33 @@ const months = [
     "November",
     "December",
 ];
-let fromfrom = "";
-let tiltil = "";
+let mymonth = months[date.getMonth()];
+const dates = document.querySelector(".dates");
+const lastdates = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
 
-function makecalender(date) {
-    let mymonth = months[date.getMonth()];
-    const dates = document.querySelector(".dates");
-    const lastdates = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate();
+document.getElementById("actualmonth").innerText = mymonth;
 
-    document.getElementById("actualmonth").innerText = mymonth;
+const firstdayindex = date.getDay() - 1;
 
-    const firstdayindex = date.getDay() - 1;
+const prevlastdates = new Date(date.getFullYear(), date.getMonth(), 0).getDate()
+const nextdayindex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
+const nextdays = 7 - nextdayindex;
 
-    const prevlastdates = new Date(date.getFullYear(), date.getMonth(), 0).getDate()
-    const nextdayindex = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDay();
-    const nextdays = 7 - nextdayindex;
+let days = "";
 
-    let year = date.getFullYear();
-    let month = date.getMonth() + 1;
-
-    let days = "";
-
-    for (let x = firstdayindex; x > 0; x--) {
-        days += `<div class="lastdates"  onclick="setdates(${year},${month - 1},${x})">${prevlastdates - x + 1}</div>`;
-    }
-
-    for (let z = 1; z <= lastdates; z++) {
-
-        days += `<div onclick="setdates(${year},${month},${z})">${z}</div>`;
-
-    }
-    for (let y = 1; y <= nextdays; y++) {
-        days += `<div class="nextdates" onclick="setdates(${year},${month + 1},${y})">${y}</div>`;
-        dates.innerHTML = days;
-    }
+for (let x = firstdayindex; x > 0; x--) {
+    days += `<div class="lastdates">${prevlastdates - x + 1}</div>`;
 }
 
-let date = new Date();
-makecalender(date);
+for (let z = 1; z <= lastdates; z++) {
+    days += `<div>${z}</div>`;
 
-function nextdate() {
-    date.setMonth(date.getMonth() + 1);
-    makecalender(date);
+}
+for (let y = 1; y <= nextdays; y++) {
+    days += `<div class="nextdates">${y}</div>`;
+    dates.innerHTML = days;
 }
 
-function prevdate() {
-    date.setMonth(date.getMonth() - 1);
-    makecalender(date);
-}
-
-let i = 0;
-
-function setdates(year, month, day) {
-    fromfrom = (year + "-" + month + "-" + day);
-    tiltil = (year + "-" + month + "-" + (day + 1));
-    document.getElementById("autotiderbar").innerText = "Den  " + day + "/" + month;
-    if (i === 0) {
-        fecthcall(fromfrom, tiltil);
-        setInterval(function () {
-            refresh()
-        }, 10000);
-        i++;
-    } else {
-        fecthcall(fromfrom, tiltil);
-    }
-}
 
 //Pop-up journal
 
@@ -129,7 +88,6 @@ function closeForm() {
 function submitForm() {
     document.getElementById("myForm").style.display = "none";
     let frm = document.getElementsByClassName("form-container")[0];
-    document.getElementById("datetime").res
     frm.submit();
     frm.reset();
 }
@@ -179,32 +137,32 @@ function noWeekend() {
     let start = document.getElementById('timeStart');
     let end = document.getElementById('timeEnd')
     let timefree = document.getElementById("timefree")
-    start.value = (day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getUTCDate() + " " + day.getHours() + ":" + day.getMinutes());
-    end.value = (endDay.getFullYear() + "-" + (endDay.getMonth() + 1) + "-" + endDay.getUTCDate() + " " + endDay.getHours() + ":" + endDay.getMinutes());
-    timefree.value = (day.getHours() + ":" + day.getMinutes() + " til " + endDay.getHours() + ":" + endDay.getMinutes() + "    d." + day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getUTCDate())
+    start.value = (day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDay() + " " + day.getHours() + ":" + day.getMinutes());
+    end.value = (endDay.getFullYear() + "-" + (endDay.getMonth() + 1) + "-" + endDay.getDay() + " " + endDay.getHours() + ":" + endDay.getMinutes());
+    timefree.value = (day.getHours() + ":" + day.getMinutes() + " til " + endDay.getHours() + ":" + endDay.getMinutes() + "    d." + day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDay())
 }
 
-window.onload = function () {
+window.onload = function (){
+    console.log("ksdkndflnæ")
     showTime()
 }
-var timeApi = 'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
+var timeApi =  'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
+
+console.log(timeApi)
+
 
 
 function showTime() {
+    console.log("readingfsnfeælsgæln")
     var date = new Date();
     var time = date.getHours();
     var minut = date.getMinutes();
     //  var sekunder = date.getSeconds(); //Hvis vi skal have sekunder med
 
-    document.getElementById("MyClockDisplay").innerText = "kl. " + time + ":" + minut; // +":"+sekunder;
-    document.getElementById("MyClockDisplay").textContent = "kl. " + time + ":" + minut; //+":"+sekunder;
+    document.getElementById("MyClockDisplay").innerText = time + ":" + minut; // +":"+sekunder;
+    document.getElementById("MyClockDisplay").textContent = time + ":" + minut; //+":"+sekunder;
 
     setTimeout(showTime, 10000,); //Tiden kan ændres, hvis vi er begrænset på processernes kapicitet
 }
-
-function refresh() {
-    fecthcall(fromfrom,tiltil)
-}
-
 
 
