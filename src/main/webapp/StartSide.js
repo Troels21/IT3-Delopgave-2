@@ -141,3 +141,28 @@ function noWeekend() {
     end.value = (endDay.getFullYear() + "-" + (endDay.getMonth() + 1) + "-" + endDay.getDay() + " " + endDay.getHours() + ":" + endDay.getMinutes());
     timefree.value = (day.getHours() + ":" + day.getMinutes() + " til " + endDay.getHours() + ":" + endDay.getMinutes() + "    d." + day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getDay())
 }
+
+window.onload = function (){
+    console.log("ksdkndflnæ")
+    showTime()
+}
+var timeApi =  'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
+
+console.log(timeApi)
+
+
+
+function showTime() {
+    console.log("readingfsnfeælsgæln")
+    var date = new Date();
+    var time = date.getHours();
+    var minut = date.getMinutes();
+    //  var sekunder = date.getSeconds(); //Hvis vi skal have sekunder med
+
+    document.getElementById("MyClockDisplay").innerText = time + ":" + minut; // +":"+sekunder;
+    document.getElementById("MyClockDisplay").textContent = time + ":" + minut; //+":"+sekunder;
+
+    setTimeout(showTime, 10000,); //Tiden kan ændres, hvis vi er begrænset på processernes kapicitet
+}
+
+
