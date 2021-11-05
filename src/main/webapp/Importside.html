@@ -9,16 +9,17 @@
 <div class="dropdown">
     <button onclick="myFunction()" class="dropdownbtn">Dropdown</button>
     <div id="myDropdown" class="dropdown-content">
-        <label value="yeet1" onclick="fetchfunction('http://localhost:8080/IT3_Delopgave_2_war/data/liste')">Test 1</label>
+        <label value="yeet1" >Test 1</label>
         <label value="yeet2">Test 2</label>
         <label value="yeet3">Test 3</label>
-        <label value="yeet4">Test 4</label>
+        <label value="yeet4" onclick="fetchfunction('http://localhost:8080/IT3_Delopgave_2_war/data/liste')">Gruppe 4</label>
         <label value="yeet5">Test 5</label>
     </div>
 </div>
+<button class="button1" onclick="window.location.replace('StartSide.html');">Go back</button>
 </body>
 
-<div class="tekstfelt"> Her skal der skrives en masse tekst og sårn jada jada jada blah blah blah</div>
+<div class="tekstfelt" id="tekstfelt"></div>
 
 <script src="Import.js"></script>
 </html>

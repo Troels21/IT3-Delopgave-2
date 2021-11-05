@@ -3,17 +3,17 @@ import com.google.gson.Gson;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
-import java.util.List;
 
 @Path("liste")
 @Produces({MediaType.APPLICATION_XML,MediaType.APPLICATION_JSON})
 @Consumes({MediaType.APPLICATION_XML, MediaType.APPLICATION_FORM_URLENCODED})
 public class ListeService {
     @GET
-    public List<Patient> getPatient() throws SQLException {
+    public String getPatient() throws SQLException {
         //return ListeRepo.getInstance().getpatientList();
         //return new FileReader("patientlist");
-        return ListeDB.getInstance().getpatientList();
+        String json = new Gson().toJson(ListeDB.getInstance().getpatientList());
+        return json;
     }
     /*
     @POST

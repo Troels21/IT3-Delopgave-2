@@ -194,6 +194,10 @@ function showTime() {
     var date = new Date();
     var time = date.getHours();
     var minut = date.getMinutes();
+
+    if (minut<10){
+        minut = "0"+minut;
+    }
     //  var sekunder = date.getSeconds(); //Hvis vi skal have sekunder med
 
     document.getElementById("MyClockDisplay").innerText = "kl. " + time + ":" + minut; // +":"+sekunder;
@@ -206,5 +210,10 @@ function refresh() {
     fecthcall(fromfrom,tiltil)
 }
 
+document.getElementById("brugernavn").innerText=sessionStorage.getItem("username");
 
+function logud(){
+    sessionStorage.setItem("username","");
+    window.location.replace("LoginSide.html");
+}
 

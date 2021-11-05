@@ -9,7 +9,6 @@ public class LoginDB {
         Mysql = new LoginDB();
     }
 
-
     public static LoginDB getInstance() {
         return Mysql;
     }
