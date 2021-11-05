@@ -1,6 +1,5 @@
 
-
-body{
+body {
 
     font-family: 'Times New Roman', sans-serif;
     background: url("IMG/white-abstract.jpg");
@@ -9,30 +8,29 @@ body{
 
 
 /*DETTE ER TOPBAR*/
-.topbar p{
+.topbar p {
     font-size: 25px;
-    font-weight:bold;
+    font-weight: bold;
     color: black;
 }
 
 /*DETTE ER FOR HOTBAR*/
 
-.hotbar{
+.hotbar {
     position: absolute;
-    top:5px;
-    right:5px;
+    top: 5px;
+    right: 5px;
     height: auto;
     width: auto;
     display: grid;
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-
-
 }
+
 .hotbar a {
-    background-color: rgb(11,71,144) /*rgb(162,221,240)*/;
+    background-color: rgb(11, 71, 144) /*rgb(162,221,240)*/;
     display: inline-block;
-    color:white;
+    color: white;
     font-weight: bold;
     text-align: center;
     border: 5px;
@@ -41,166 +39,202 @@ body{
 }
 
 /*DETTE ER FOR BRUGERNAVN*/
-.bruger{
+.bruger {
     font-size: 30px;
     position: relative;
-    top:50px;
-    left:20px;
+    top: 50px;
+    left: 20px;
 }
 
-
 /*DETTE ER FOR MELLEMSTED*/
-
-.mellemsted{
+.mellemsted {
     position: relative;
     display: grid;
     grid-template-columns: 30% 70%;
     grid-gap: 10px;
-    width:200px;
+    padding: 2px;
+    width: 200px;
     height: 30px;
-    left:80%;
+    left: 80%;
 }
-.mellemsted div{
+
+.mellemsted div {
     font-weight: bold;
-    background-color: rgb(11,71,144) /*rgb(162,221,240)*/;
+    background-color: rgb(11, 71, 144) /*rgb(162,221,240)*/;
     text-align: center;
-    padding:5px;
+    padding: 5px;
     border-radius: 3px;
 }
-.mellemsted div a{
+
+.mellemsted div a {
     display: inline-block;
     color: white;
 }
 
 /*AUTO TIDER*/
-.autotidersted{
-    position:absolute;
+.autotidersted {
+    position: absolute;
     width: 30rem;
     height: 40rem;
     left: 58%;
-    margin:0;
+    margin: 0;
     justify-content: center;
     align-items: center;
     background-color: gray;
 }
-/*DETTE ER FOR SKEMA*/
 
-.schema{
-    position:absolute;
+.autotiderbar {
+    width: 100%;
+    height: 10rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 2em;
+    color: white;
+    background: rgb(11, 71, 144);
+}
+
+.autotider {
+    font-size: 35px;
+}
+
+.autoname {
+    font-size: 20px;
+}
+
+.autonote {
+    font-size: 15px;
+}
+
+/*DETTE ER FOR SKEMA*/
+.schema {
+    position: absolute;
     width: 40rem;
     height: 40rem;
-    padding: 0;
-    margin:0;
     justify-content: center;
     align-items: center;
     background-color: gray;
-    box-shadow: 0 0.1rem 3rem rgba(0,0,0,0.5);
 }
-.actualdate{
+
+.actualdate {
     width: 100%;
-    height:10rem;
+    height: 10rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
     text-align: center;
-    color:white;
-    background:rgb(11,71,144);
+    color: white;
+    background: rgb(11, 71, 144);
 }
-.actualdate div{
+
+.actualdate div {
     padding: 2rem;
 }
-.actualdate h1{
+
+.actualdate h1 {
     padding: 2rem;
     font-weight: 400;
     text-transform: uppercase;
 }
-.next:hover{
+
+.next:hover {
     background-color: dodgerblue;
     cursor: pointer;
 }
-.prev:hover{
+
+.prev:hover {
     background-color: dodgerblue;
     cursor: pointer;
 }
-.days{
-    width:100%;
-    height:5rem;
+
+.days {
+    width: 100%;
+    height: 5rem;
     display: flex;
     align-items: center;
-    padding:0 0.4rem;
+    padding: 0 0.4rem;
 }
-.days div{
+
+.days div {
     letter-spacing: 0.1rem;
-    width:calc(40rem/7);
+    width: calc(40rem / 7);
     justify-content: center;
     align-items: center;
 }
-.dates{
-    width:100%;
-    display:flex;
+
+.dates {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
     padding: 0.2rem;
 }
-.dates div{
+
+.dates div {
     font-size: 1.4rem;
     margin: 0.2rem;
-    width:calc(37rem/7);
-    height:3.5rem;
+    width: calc(37rem / 7);
+    height: 3.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: background-color 0.2s;
 }
-.today{
-    background-color: rgb(11,71,144);
-    color:white;
+
+.today {
+    background-color: rgb(11, 71, 144);
+    color: white;
     font-weight: bolder;
 }
-.dates div:hover:not(.today){
+
+.dates div:hover:not(.today) {
     background-color: dodgerblue;
-    cursor:pointer;
-}
-.today:hover{
-    cursor:pointer;
+    cursor: pointer;
 }
 
-.lastdates{
+.today:hover {
+    cursor: pointer;
+}
+
+.lastdates {
     opacity: 50%;
 }
 
-.nextdates{
+.nextdates {
     opacity: 50%;
 }
-
 
 /* DETTE ER FOR SIDESKEMA*/
 .tider {
-    position:relative;
-    display:grid;
-    grid-template-columns: 10% repeat(1,1fr);
-    grid-template-rows:auto ;
+    position: relative;
+    display: grid;
+    grid-template-columns: 10% repeat(1, 1fr);
+    grid-template-rows:auto;
     grid-gap: 2px;
     overflow: auto;
-    top:100rem;
-    width: 50rem ;
+    top: 100rem;
+    width: 50rem;
     max-height: 600px;
-    padding:1em;
-
+    padding: 1em;
 }
-.tider div{
+
+.tider div {
     font-weight: bold;
     color: white;
     padding: 1em;
-    background-color: rgb(11,71,144);
+    background-color: rgb(11, 71, 144);
     border-radius: 3px;
 }
+
 .tider div:nth-child(2n) {
-    background-color:rgb(115,121,125) ;
+    background-color: rgb(115, 121, 125);
     opacity: 100;
 }
 
 /* Pop-up journal */
-.form-popup{
+.form-popup {
     display: none;
     position: fixed;
     bottom: 0;
@@ -213,15 +247,18 @@ body{
     padding: 10px;
     background-color: white;
 }
-.button1{
-    border: 1px solid rgb(11,71,144);
-    background-color: rgb(11,71,144);
+
+.button1 {
+    border: 1px solid rgb(11, 71, 144);
+    background-color: rgb(11, 71, 144);
     color: white;
     height: 30px;
     text-decoration: underline;
 }
 
-.button1:hover {background-color: dodgerblue;}
+.button1:hover {
+    background-color: dodgerblue;
+}
 
 .button1:active {
     background-color: dodgerblue;
@@ -266,7 +303,7 @@ input {
     border: 1px solid;
 }
 
-select{
+select {
     background-color: #eee;
     padding: 12px;
     margin: 8px 0;
@@ -274,7 +311,7 @@ select{
     border: 1px solid;
 }
 
-textarea{
+textarea {
     background-color: #eee;
     padding: 12px;
     margin: 8px 0;
@@ -283,8 +320,8 @@ textarea{
 }
 
 .button {
-    border: 1px solid rgb(11,71,144);
-    background-color: rgb(11,71,144);
+    border: 1px solid rgb(11, 71, 144);
+    background-color: rgb(11, 71, 144);
     color: white;
     font-size: 12px;
     font-weight: bold;
@@ -293,7 +330,10 @@ textarea{
     height: 30px;
     width: 49%
 }
-.button:hover {background-color: dodgerblue;}
+
+.button:hover {
+    background-color: dodgerblue;
+}
 
 .button:active {
     background-color: dodgerblue;;
