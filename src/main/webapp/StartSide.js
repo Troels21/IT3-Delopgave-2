@@ -210,5 +210,12 @@ function refresh() {
     fecthcall(fromfrom,tiltil)
 }
 
+document.getElementById("brugernavn").innerText=sessionStorage.getItem("username");
+
+function logud(){
+    sessionStorage.setItem("username","");
+    window.location.replace("LoginSide.html");
+}
+
 
 

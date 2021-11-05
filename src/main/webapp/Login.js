@@ -15,9 +15,12 @@ function togglevisibiliy() {
 }
 
 /* kode til at validere koden */
+let user = "";
+let pass = "";
+
 function fetchrs() {
-    let user = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
+    user = document.getElementById("username").value;
+    pass = document.getElementById("password").value;
     fetch("http://localhost:8080/IT3_Delopgave_2_war/data/login?" + new URLSearchParams({
             username: user,
             password: pass,
@@ -27,6 +30,7 @@ function fetchrs() {
 
 function validate(i) {
     if (i == 1) {
+        sessionStorage.setItem("username",user);
         window.location.replace("StartSide.html");
     } else {
         alert("Forkert password");
