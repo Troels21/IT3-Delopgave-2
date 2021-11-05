@@ -217,5 +217,3 @@ function logud(){
     window.location.replace("LoginSide.html");
 }
 
-
-

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Start side</title>
     <link rel="stylesheet" type="text/css" href="Startside.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 </head>
 <body>
 
@@ -28,7 +29,9 @@
 <!--DETTE ER FOR MELLEMSTED-->
 
 <div class="mellemsted">
-    <button onclick="refresh()" class="button1">Refresh</button>
+    <button onclick="refresh()" class="button1"> <span class="material-icons-outlined">
+refresh
+</span> </button>
     <!--Pop-up journal-->
     <button onclick="openForm()" class="button1">Tilføj ny patient</button>
 </div>
@@ -89,7 +92,7 @@
 
 <!--DETTE ER FOR SKEMA-->
 
-<div class="schema">
+<div class="schema" >
     <div class="actualdate">
         <div class="prev" onclick="prevdate()">Forrige</div>
         <h1 id="actualmonth"></h1>
@@ -105,12 +108,12 @@
             <div>Lørdag</div>
             <div>Søndag</div>
         </div>
+
         <div class="lastdates"></div>
-        <div class="dates"></div>
+        <div class="dates"> </div>
         <div class="nextdates"></div>
     </div>
 </div>
-
 
 </body>
 <script src="StartSide.js"></script>
