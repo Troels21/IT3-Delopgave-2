@@ -195,8 +195,8 @@ function showTime() {
     var time = date.getHours();
     var minut = date.getMinutes();
 
-    if (minut<10){
-        minut = "0"+minut;
+    if (minut < 10) {
+        minut = "0" + minut;
     }
     //  var sekunder = date.getSeconds(); //Hvis vi skal have sekunder med
 
@@ -207,13 +207,13 @@ function showTime() {
 }
 
 function refresh() {
-    fecthcall(fromfrom,tiltil)
+    fecthcall(fromfrom, tiltil)
 }
 
-document.getElementById("brugernavn").innerText=sessionStorage.getItem("username");
+document.getElementById("brugernavn").innerText = sessionStorage.getItem("username");
 
-function logud(){
-    sessionStorage.setItem("username","");
+function logud() {
+    sessionStorage.setItem("username", "");
     window.location.replace("LoginSide.html");
 }
 

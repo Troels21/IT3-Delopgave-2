@@ -31,14 +31,17 @@
 <div class="mellemsted">
     <button onclick="refresh()" class="button1"> <span class="material-icons-outlined">
 refresh
-</span> </button>
+</span></button>
     <!--Pop-up journal-->
     <button onclick="openForm()" class="button1">Tilføj ny patient</button>
 </div>
 
 
 <!--DETTE ER FOR AUTOGENNERET TIDER -->
-<div class="autotidersted" id="autosted"><div class="autotiderbar" id="autotiderbar">Tider på dagen:</div><div class="autotider" id="autotider"></div></div>
+<div class="autotidersted" id="autosted">
+    <div class="autotiderbar" id="autotiderbar">Tider på dagen:</div>
+    <div class="autotider" id="autotider"></div>
+</div>
 
 <!-- journal -->
 <div class="form-popup" id="myForm">
@@ -92,7 +95,7 @@ refresh
 
 <!--DETTE ER FOR SKEMA-->
 
-<div class="schema" >
+<div class="schema">
     <div class="actualdate">
         <div class="prev" onclick="prevdate()">Forrige</div>
         <h1 id="actualmonth"></h1>
@@ -110,7 +113,7 @@ refresh
         </div>
 
         <div class="lastdates"></div>
-        <div class="dates"> </div>
+        <div class="dates"></div>
         <div class="nextdates"></div>
     </div>
 </div>
