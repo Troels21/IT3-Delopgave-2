@@ -18,6 +18,7 @@ public class AftaleController {
             return false;
         }
     }
+
     public boolean navnCheck(String s){
         for (int i=0;i<s.length();i++){
             char c = s.charAt(i);
