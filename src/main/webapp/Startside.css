@@ -101,7 +101,8 @@ body {
 }
 
 .autotider {
-    font-size: 35px;
+    font-size: 25px;
+    background-color: gray;
 }
 
 .autoname {

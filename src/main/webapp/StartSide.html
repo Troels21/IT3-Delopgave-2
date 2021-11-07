@@ -33,7 +33,7 @@
 refresh
 </span></button>
     <!--Pop-up journal-->
-    <button onclick="openForm()" class="button1">Tilføj ny patient</button>
+    <button onclick="openForm()" class="button1">Tilføj ny aftale</button>
 </div>
 
 
@@ -45,8 +45,7 @@ refresh
 
 <!-- journal -->
 <div class="form-popup" id="myForm">
-    <form action="http://localhost:8080/IT3_Delopgave_2_war/data/liste/listeSQL" method="post"
-          enctype="application/x-www-form-urlencoded" target="_blank" class="form-container">
+    <div class="form-container" >
         <h1>Journal</h1>
         <span>
             <label for="cpr">CPR</label></span>
@@ -57,40 +56,22 @@ refresh
 
         <span>
             <input type="text" id="navn" name="name" placeholder="Fornavn og efternavn" required class="box"></span>
-        <!--
-        <span>
-            <label for="alder">Alder</label> <b> & </b><label for="koen">k&#248n</label></span>
-        <span>
-            <input type="text" id="alder" name="alder" placeholder="Alder " required class="box">
-            <select name="koen" id="koen" class="dropdown">
-                <option value="" disabled selected>k&#248n</option>
-                <option value="M">Mand</option>
-                <option value="D">Kvinde</option>
-                <option value="A">Andet</option>
-        </select></span>/*-->
-        <!--
-                <span>
-                    <label for="date">Dato</label> <b> & </b> <label for="time">Tidspunkt</label></span>
-
-                <input type="date" id="date" name="date" min="2021-01-01" max="2022-12-31" required>
-                <label id="tidmellem"> (08:30-16:30)</label>
-                <input type="time" id="time" name="timestart" min="08:30" max="16:30" step="900" required>-->
         <label for="datetime">Finder t&#230tteste tid</label>
 
         <input type="datetime-local" id="datetime" onfocusout="noWeekend()" required>
         <label for="timefree">t&#230tteste tid</label>
-        <input type="text" id="timefree">
+        <input type="text" id="timefree" disabled>
 
         <input type="text" id="timeStart" name="timestart" hidden>
         <input type="text" id="timeEnd" name="timeend" hidden>
 
         <span>
             <label for="textarea">Notat </label></span>
-        <textarea id="textarea" name="note" rows="4" cols="50" oninput="rounding()"></textarea><br>
+        <textarea id="textarea" name="note" rows="4" cols="50"></textarea><br>
 
         <input type="button" value="Cancel" class="button" onclick="closeForm()">
         <input type="button" value="Indsend" class="button" onclick="submitForm()">
-    </form>
+    </div>
 </div>
 
 <!--DETTE ER FOR SKEMA-->

@@ -6,7 +6,7 @@ import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Patient implements Serializable {
+public class Aftale implements Serializable {
 
     private String cpr;
     private String name;
@@ -16,7 +16,7 @@ public class Patient implements Serializable {
 
     @Override
     public String toString() {
-        return "Patient{" +
+        return "Aftale{" +
                 "cpr='" + cpr + '\'' +
                 ", name='" + name + '\'' +
                 ", timestart='" + timestart + '\'' +

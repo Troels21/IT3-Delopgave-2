@@ -1,7 +1,7 @@
 function fecthcall(from, to) {
     let fra = from;
     let til = to;
-    fetch("http://localhost:8080/IT3_Delopgave_2_war/data/liste/listeSQL?" + new URLSearchParams({
+    fetch("http://localhost:8080/IT3_Delopgave_2_war/data/aftaler/aftalerSQL?" + new URLSearchParams({
         from: fra,
         to: til,
     }))
@@ -14,14 +14,12 @@ function udfyldskema(data) {
     let cpr = "";
     let container = "";
     let note = "";
-    console.log("Hello");
 
     for (let i = 0; i < data.length; i++) {
         time = data[i].timestart.substring(11, 16);
         name = (data[i].name + " ");
         cpr = "CPR: " + data[i].cpr;
         note = "Notat: " + data[i].note;
-
 
         let tider = '<span class="autotider">' + time + '</span>'
         let navne = '<span class="autoname">' + name + cpr + '</span>';
@@ -115,6 +113,23 @@ function setdates(year, month, day) {
 }
 
 //Pop-up journal
+function formfetch() {
+    fetch("http://localhost:8080/IT3_Delopgave_2_war/data/aftaler/aftalerSQL?" + new URLSearchParams({
+        cpr: document.getElementById("cpr").value,
+        name: document.getElementById("navn").value,
+        timestart: document.getElementById("timeStart").value,
+        timeend: document.getElementById("timeEnd").value,
+        note: document.getElementById("textarea").value
+    }), {
+        method: "POST",
+    }).then(async resp => {
+        if (resp.status >= 200 && resp.status <= 299) {
+            await resp.text();
+        } else {
+            throw Error(await resp.text());
+        }
+    }).then(text => alert(text)).catch(Error => alert(Error));
+}
 
 function openForm() {
     document.getElementById("myForm").style.display = "block";
@@ -122,16 +137,22 @@ function openForm() {
 
 function closeForm() {
     document.getElementById("myForm").style.display = "none";
-    let frm = document.getElementsByClassName("form-container")[0];
-    frm.reset();
+    resetForm()
 }
 
 function submitForm() {
     document.getElementById("myForm").style.display = "none";
-    let frm = document.getElementsByClassName("form-container")[0];
-    document.getElementById("datetime").res
-    frm.submit();
-    frm.reset();
+    formfetch()
+    resetForm()
+}
+
+function resetForm() {
+    document.getElementById("cpr").value = "";
+    document.getElementById("navn").value = "";
+    document.getElementById("timeStart").value = "";
+    document.getElementById("timeEnd").value = "";
+    document.getElementById("timefree").value = "";
+    document.getElementById("textarea").value = "";
 }
 
 function noWeekend() {
@@ -139,11 +160,6 @@ function noWeekend() {
 
     let day = new Date(datetime.value);
     let endDay = new Date(datetime.value);
-    if (day.getDay() === 6 || day.getDay() === 0) {
-        alert('Weekends not allowed');
-        day.setDate(0)
-        datetime.value = "";
-    }
 
     let time = day.getMinutes();
 
@@ -182,6 +198,15 @@ function noWeekend() {
     start.value = (day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getUTCDate() + " " + day.getHours() + ":" + day.getMinutes());
     end.value = (endDay.getFullYear() + "-" + (endDay.getMonth() + 1) + "-" + endDay.getUTCDate() + " " + endDay.getHours() + ":" + endDay.getMinutes());
     timefree.value = (day.getHours() + ":" + day.getMinutes() + " til " + endDay.getHours() + ":" + endDay.getMinutes() + "    d." + day.getFullYear() + "-" + (day.getMonth() + 1) + "-" + day.getUTCDate())
+
+    if (day.getDay() === 6 || day.getDay() === 0) {
+        alert('Weekends not allowed');
+        day.setDate(0)
+        datetime.value = "";
+        start.value = "";
+        end.value = "";
+        timefree.value = "";
+    }
 }
 
 window.onload = function () {
