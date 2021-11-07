@@ -1,4 +1,4 @@
-function fecthcall(from, to) {
+function hentAftaleFecth(from, to) {
     let fra = from;
     let til = to;
     fetch("http://localhost:8080/IT3_Delopgave_2_war/data/aftaler/aftalerSQL?" + new URLSearchParams({
@@ -102,13 +102,13 @@ function setdates(year, month, day) {
     tiltil = (year + "-" + month + "-" + (day + 1));
     document.getElementById("autotiderbar").innerText = "Den  " + day + "/" + month;
     if (i === 0) {
-        fecthcall(fromfrom, tiltil);
+        hentAftaleFecth(fromfrom, tiltil);
         setInterval(function () {
             refresh()
         }, 10000);
         i++;
     } else {
-        fecthcall(fromfrom, tiltil);
+        hentAftaleFecth(fromfrom, tiltil);
     }
 }
 
@@ -212,7 +212,8 @@ function noWeekend() {
 window.onload = function () {
     showTime()
 }
-var timeApi = 'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
+
+//var timeApi = 'http://worldtimeapi.org/api/timezone/Europe/Copenhagen';
 
 
 function showTime() {
@@ -232,7 +233,7 @@ function showTime() {
 }
 
 function refresh() {
-    fecthcall(fromfrom, tiltil)
+    hentAftaleFecth(fromfrom, tiltil)
 }
 
 document.getElementById("brugernavn").innerText = sessionStorage.getItem("username");

@@ -13,18 +13,6 @@ public class AftaleService {
     public String getPatient() throws SQLException {
         return new Gson().toJson(SQL.getSqlOBJ().getAftalerListe());
     }
-    /*
-    @POST
-    public String makePatient(Patient patient) throws SQLException {
-        ListeDB.getInstance().insertPatientSQL(patient);
-            //ListeRepo.getInstance().create(patient);
-            mapper.enable(SerializationFeature.INDENT_OUTPUT);
-            String xmlString = mapper.writeValueAsString(ListeRepo.getInstance().getpatientList());
-            System.out.println(xmlString);
-            FileWriter fw = new FileWriter("patientlist",true);
-            fw.write(xmlString);
-        return "added patient: " + patient.toString();
-    }*/
 
     @Path("aftalerSQL")
     @POST
