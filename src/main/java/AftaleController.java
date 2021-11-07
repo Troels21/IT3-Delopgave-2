@@ -1,5 +1,3 @@
-import java.sql.SQLException;
-
 public class AftaleController {
 
     private AftaleController() {
@@ -30,7 +28,7 @@ public class AftaleController {
         return true;
     }
 
-    public String createAftale(String cpr, String name, String timestart, String timeend, String note) throws SQLException, OurException {
+    public String createAftale(String cpr, String name, String timestart, String timeend, String note) throws OurException {
         Aftale aftale = new Aftale();
         if (cprCheck(cpr)) {
             if (navnCheck(name)) {
