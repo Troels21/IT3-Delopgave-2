@@ -25,12 +25,18 @@ function fetchrs() {
             username: user,
             password: pass,
         }
-    )).then(resp => resp.text()).then(data => validate(data));
+    )).then(async resp => {
+        if (resp.status >= 200 && resp.status <= 299) {
+            return resp.text();
+        } else {
+            throw Error(await resp.text());
+        }
+    }).then(data => validate(data)).catch(Error =>alert(Error));
 }
 
 function validate(i) {
     if (i == 1) {
-        sessionStorage.setItem("username",user);
+        sessionStorage.setItem("username", user);
         window.location.replace("StartSide.html");
     } else {
         alert("Forkert password");

@@ -6,10 +6,10 @@ function myFunction() {
 /* Lukker dropdown menuen */
 window.onclick = function (event) {
     if (!event.target.matches('.dropdownbtn')) {
-        var dropdowns = document.getElementsByClassName("dropdown-content");
-        var i;
+        let dropdowns = document.getElementsByClassName("dropdown-content");
+        let i;
         for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
+            let openDropdown = dropdowns[i];
             if (openDropdown.classList.contains('show')) {
                 openDropdown.classList.remove('show');
             }
@@ -24,7 +24,6 @@ function fetchfunction(apiurl) {fetch(apiurl).
 }
 
 function displaydata(data) {
-    let string ="";
     let container="";
     for (let i=0 ; i < data.length ; i++) {
         let namecpr = data[i].name+"   ---"+data[i].cpr;
