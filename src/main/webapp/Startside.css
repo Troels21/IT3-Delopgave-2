@@ -25,6 +25,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    font-family: 'Times New Roman', sans-serif;
 }
 
 .hotbar a {
@@ -36,6 +37,7 @@ body {
     border: 5px;
     padding: 5px;
     border-radius: 3px;
+    font-family: 'Times New Roman', sans-serif;
 }
 
 /*DETTE ER FOR BRUGERNAVN*/
@@ -56,7 +58,8 @@ body {
     width: 200px;
     height: 30px;
     left: 58%;
-    right: 30%
+    right: 30%;
+    font-family: "Times New Roman", sans-serif;
 }
 
 .mellemsted div {
@@ -94,7 +97,6 @@ body {
     align-items: center;
     text-align: center;
     font-weight: 400;
-    text-transform: uppercase;
     font-size: 2em;
     color: white;
     background: rgb(11, 71, 144);
@@ -198,6 +200,10 @@ body {
     cursor: pointer;
 }
 
+.active {
+    background-color: dodgerblue;
+}
+
 .today:hover {
     cursor: pointer;
 }
@@ -257,6 +263,7 @@ body {
     background-color: rgb(11, 71, 144);
     color: white;
     height: 30px;
+    font-family: "Times New Roman", sans-serif;
 }
 
 .button1:hover {

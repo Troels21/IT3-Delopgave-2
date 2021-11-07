@@ -68,18 +68,19 @@ function makecalender(date) {
     let days = "";
 
     for (let x = firstdayindex; x > 0; x--) {
-        days += `<div class="lastdates"  onclick="setdates(${year},${month - 1},${x})">${prevlastdates - x + 1}</div>`;
+        days += `<div class="lastdates"  onclick="prevdate();setdates(${year},${month - 1 === 0 ? 12 : month - 1},${prevlastdates - x + 1})">${prevlastdates - x + 1}</div>`;
     }
 
     for (let z = 1; z <= lastdates; z++) {
 
-        days += `<div onclick="setdates(${year},${month},${z})">${z}</div>`;
+        days += `<div id="${year},${month},${z}" onclick="setdates(${year},${month},${z})">${z}</div>`;
 
     }
     for (let y = 1; y <= nextdays; y++) {
-        days += `<div class="nextdates" onclick="setdates(${year},${month + 1},${y})">${y}</div>`;
-        dates.innerHTML = days;
+        days += `<div class="nextdates" onclick="nextdate();setdates(${year},${month + 1 === 13 ? 1 : month + 1},${y})">${y}</div>`;
+        
     }
+    dates.innerHTML = days;
 }
 
 let date = new Date();
@@ -101,6 +102,14 @@ function setdates(year, month, day) {
     fromfrom = (year + "-" + month + "-" + day);
     tiltil = (year + "-" + month + "-" + (day + 1));
     document.getElementById("autotiderbar").innerText = "Den  " + day + "/" + month;
+
+    //Hvis der allerede er en aktiv klasse. Dvs en dato allerede er trykket på.
+    const active = document.getElementsByClassName("active")
+    if (active.length > 0) {
+        active[0].className = ""; //Fjerner den aktive klasse.
+    }
+    //Gør klassen (den enkelte dato der bliver trykket på aktiv.
+    document.getElementById(`${year},${month},${day}`).className = "active";
     if (i === 0) {
         hentAftaleFecth(fromfrom, tiltil);
         setInterval(function () {
@@ -218,6 +227,7 @@ window.onload = function () {
 
 function showTime() {
     var date = new Date();
+    let dato = `${date.getDate()}/${date.getMonth()}/${date.getFullYear()}`
     var time = date.getHours();
     var minut = date.getMinutes();
 
@@ -226,8 +236,8 @@ function showTime() {
     }
     //  var sekunder = date.getSeconds(); //Hvis vi skal have sekunder med
 
-    document.getElementById("MyClockDisplay").innerText = "kl. " + time + ":" + minut; // +":"+sekunder;
-    document.getElementById("MyClockDisplay").textContent = "kl. " + time + ":" + minut; //+":"+sekunder;
+    document.getElementById("MyClockDisplay").innerText = `${dato} kl. ${time}:${minut}` //kl. " + time + ":" + minut; // +":"+sekunder;
+    //document.getElementById("MyClockDisplay").textContent = "kl. " + time + ":" + minut; //+":"+sekunder;
 
     setTimeout(showTime, 10000,); //Tiden kan ændres, hvis vi er begrænset på processernes kapicitet
 }
