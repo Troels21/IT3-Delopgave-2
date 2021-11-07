@@ -1,4 +1,5 @@
 public class OurException extends Exception {
+
     @Override
     public String getMessage() {
         return Message;
@@ -8,7 +9,6 @@ public class OurException extends Exception {
         Message = message;
     }
 
-    String Message ="Brugernavn eller Password mangler";
-
+    String Message ="Error 420";
 
 }
