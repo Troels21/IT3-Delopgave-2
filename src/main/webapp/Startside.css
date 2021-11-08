@@ -118,6 +118,7 @@ body {
 /*DETTE ER FOR SKEMA*/
 .schema {
     position: absolute;
+    left: 10%;
     width: 40rem;
     height: 40rem;
     justify-content: center;
