@@ -3,6 +3,7 @@ import com.google.gson.Gson;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.sql.SQLException;
+import java.util.List;
 
 @Path("aftaler")
 @Produces({MediaType.APPLICATION_XML, MediaType.APPLICATION_JSON})
@@ -10,8 +11,8 @@ import java.sql.SQLException;
 public class AftaleService {
 
     @GET
-    public String getPatient() throws SQLException {
-        return new Gson().toJson(SQL.getSqlOBJ().getAftalerListe());
+    public List<Aftale> getPatient() throws SQLException {
+        return SQL.getSqlOBJ().getAftalerListe();
     }
 
     @Path("aftalerSQL")
