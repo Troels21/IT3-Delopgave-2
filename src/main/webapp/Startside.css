@@ -25,6 +25,7 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
+    font-family: 'Times New Roman', sans-serif;
 }
 
 .hotbar a {
@@ -36,6 +37,7 @@ body {
     border: 5px;
     padding: 5px;
     border-radius: 3px;
+    font-family: 'Times New Roman', sans-serif;
 }
 
 /*DETTE ER FOR BRUGERNAVN*/
@@ -56,7 +58,8 @@ body {
     width: 200px;
     height: 30px;
     left: 58%;
-    right: 30%
+    right: 30%;
+    font-family: "Times New Roman", sans-serif;
 }
 
 .mellemsted div {
@@ -94,7 +97,6 @@ body {
     align-items: center;
     text-align: center;
     font-weight: 400;
-    text-transform: uppercase;
     font-size: 2em;
     color: white;
     background: rgb(11, 71, 144);
@@ -116,6 +118,7 @@ body {
 /*DETTE ER FOR SKEMA*/
 .schema {
     position: absolute;
+    left: 10%;
     width: 40rem;
     height: 40rem;
     justify-content: center;
@@ -198,6 +201,10 @@ body {
     cursor: pointer;
 }
 
+.active {
+    background-color: dodgerblue;
+}
+
 .today:hover {
     cursor: pointer;
 }
@@ -257,6 +264,7 @@ body {
     background-color: rgb(11, 71, 144);
     color: white;
     height: 30px;
+    font-family: "Times New Roman", sans-serif;
 }
 
 .button1:hover {
@@ -344,6 +352,61 @@ textarea {
     transform: translateY(4px);
 }
 
+/* Fra website */
+
+.open-button {
+    background-color: rgb(11,71,144) ;
+    color: white;
+    padding: 16px 20px;
+    border: none;
+    cursor: pointer;
+    opacity: 0.8;
+    position: fixed;
+    bottom: 23px;
+    right: 28px;
+    width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+    display: none;
+    position: fixed;
+    bottom: 0;
+    right: 15px;
+    z-index: 9;
+    background-color: white;
+    border: 1px solid black;
+}
+
+/* Add styles to the form container */
+.form-container {
+    max-width: 300px;
+    padding: 10px;
+    background-color: white;
+
+}
+
+/* Full-width input fields */
+.form-container input[type=text], .form-container input[type=password] {
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    border: none;
+    background: #f1f1f1;
+
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+    background-color: #ddd;
+    outline: none;
+}
+
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+    opacity: 1;
+}
 
 
 
