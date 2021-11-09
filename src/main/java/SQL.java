@@ -45,9 +45,12 @@ public class SQL {
     public List<Aftale> getAftaleListeDateTime(String fra, String til) throws SQLException {
         SQL.getSqlOBJ().makeConnectionSQL();
         AftaleList = new ArrayList<>();
-        String query = "SELECT * FROM patients WHERE startTime BETWEEN '" + fra + "' and '" + til + "';";
         try {
-            ResultSet rs = SQL.getSqlOBJ().myStatement.executeQuery(query);
+            PreparedStatement pp = myConn.prepareStatement("SELECT * FROM patients WHERE startTime BETWEEN ? and ?;");
+            pp.setString(1,fra);
+            pp.setString(2,til);
+
+            ResultSet rs = pp.executeQuery();
 
             while (rs.next()) {
                 Aftale p = new Aftale();
@@ -118,10 +121,11 @@ public class SQL {
 
     public String hentBrugerListe(String s) throws SQLException {
         SQL.getSqlOBJ().makeConnectionSQL();
-        String query1 = "SELECT * FROM listedb.LoginOplysninger WHERE USERNAME = '" + s + "';";
+        PreparedStatement pp = myConn.prepareStatement("SELECT * FROM listedb.LoginOplysninger WHERE USERNAME = ?;");
+        pp.setString(1,s);
         String svar = "";
         try {
-            ResultSet rs = SQL.getSqlOBJ().myStatement.executeQuery(query1);
+            ResultSet rs = pp.executeQuery();
             while (rs.next()) {
                 svar = svar + rs.getString(1);
                 svar = svar + "A" + rs.getString(2);
