@@ -20,7 +20,7 @@ public class SQL {
     private Connection myConn;
     public Statement myStatement;
 
-    private List<Aftale> AftaleList;
+    private List<OGAftale> OGAftaleList;
 
     public void makeConnectionSQL() throws SQLException {
         try {
@@ -42,9 +42,9 @@ public class SQL {
         }
     }
 
-    public List<Aftale> getAftaleListeDateTime(String fra, String til) throws SQLException {
+    public List<OGAftale> getAftaleListeDateTime(String fra, String til) throws SQLException {
         SQL.getSqlOBJ().makeConnectionSQL();
-        AftaleList = new ArrayList<>();
+        OGAftaleList = new ArrayList<>();
         try {
             PreparedStatement pp = myConn.prepareStatement("SELECT * FROM patients WHERE startTime BETWEEN ? and ?;");
             pp.setString(1,fra);
@@ -53,24 +53,24 @@ public class SQL {
             ResultSet rs = pp.executeQuery();
 
             while (rs.next()) {
-                Aftale p = new Aftale();
+                OGAftale p = new OGAftale();
                 p.setCpr(String.valueOf(rs.getInt(1)));
                 p.setName(rs.getString(2));
                 p.setTimestart(rs.getString(3));
                 p.setTimeend(rs.getString(4));
                 p.setNote(rs.getString(5));
 
-                AftaleList.add(p);
+                OGAftaleList.add(p);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
         SQL.getSqlOBJ().removeConnectionSQL();
 
-        return AftaleList;
+        return OGAftaleList;
     }
 
-    public void insertAftaleSQL(Aftale p) throws OurException {
+    public void insertAftaleSQL(OGAftale p) throws OurException {
 
 
         try {
@@ -93,22 +93,22 @@ public class SQL {
         }
     }
 
-    public List<Aftale> getAftalerListe() throws SQLException {
+    public List<OGAftale> getAftalerListe() throws SQLException {
         SQL.getSqlOBJ().makeConnectionSQL();
-        AftaleList = new ArrayList<>();
+        OGAftaleList = new ArrayList<>();
         String query = "SELECT * FROM patients";
         try {
             ResultSet rs = SQL.getSqlOBJ().myStatement.executeQuery(query);
 
             while (rs.next()) {
-                Aftale p = new Aftale();
+                OGAftale p = new OGAftale();
                 p.setCpr(String.valueOf(rs.getInt(1)));
                 p.setName(rs.getString(2));
                 p.setTimestart(rs.getString(3));
                 p.setTimeend(rs.getString(4));
                 p.setNote(rs.getString(5));
 
-                AftaleList.add(p);
+                OGAftaleList.add(p);
             }
 
         } catch (SQLException e) {
@@ -116,7 +116,7 @@ public class SQL {
         }
         SQL.getSqlOBJ().removeConnectionSQL();
 
-        return AftaleList;
+        return OGAftaleList;
     }
 
     public String hentBrugerListe(String s) throws SQLException {

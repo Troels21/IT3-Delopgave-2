@@ -30,18 +30,18 @@ public class AftaleController {
     }
 
     public String createAftale(String cpr, String name, String timestart, String timeend, String note) throws OurException {
-        Aftale aftale = new Aftale();
+        OGAftale OGAftale = new OGAftale();
         if (cprCheck(cpr)) {
             if (navnCheck(name)) {
                 if (note.length() < 255) {
-                    aftale.setCpr(cpr);
-                    aftale.setName(name);
-                    aftale.setTimestart(timestart);
-                    aftale.setTimeend(timeend);
-                    aftale.setNote(note);
+                    OGAftale.setCpr(cpr);
+                    OGAftale.setName(name);
+                    OGAftale.setTimestart(timestart);
+                    OGAftale.setTimeend(timeend);
+                    OGAftale.setNote(note);
 
-                    SQL.getSqlOBJ().insertAftaleSQL(aftale);
-                    return "added patient" + aftale;
+                    SQL.getSqlOBJ().insertAftaleSQL(OGAftale);
+                    return "added patient" + OGAftale;
                 } else {
                     //forkert note
                     OurException ex = new OurException();

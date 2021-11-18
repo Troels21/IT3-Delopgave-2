@@ -1,12 +1,9 @@
 import java.io.Serializable;
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
-public class Aftale implements Serializable {
+@jakarta.xml.bind.annotation.XmlRootElement
+public class OGAftale implements Serializable {
 
     private String cpr;
     private String name;

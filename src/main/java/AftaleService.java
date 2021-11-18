@@ -11,7 +11,7 @@ import java.util.List;
 public class AftaleService {
 
     @GET
-    public List<Aftale> getPatient() throws SQLException {
+    public List<OGAftale> getPatient() throws SQLException {
         return SQL.getSqlOBJ().getAftalerListe();
     }
 
